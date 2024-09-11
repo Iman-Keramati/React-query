@@ -45,7 +45,7 @@ export default function Home() {
           <li key={idx}>{i.title}</li>
         ))}
       </ul>
-      {/* MUTATION TEST */}
+      {/* MUTATION */}
       {mutation.isPending && <p>adding new product ....</p>}
       <button
         className="rounded-lg bg-green-600 text-[18px] scale-[1] text-white p-4 m-5 hover:scale-[0.9] transition-all duration-500 hover:bg-green-800"
