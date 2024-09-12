@@ -1,38 +1,23 @@
 "use client";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import useGetQuery from "./Hook/useGetQuery";
+import usePostMutation from "./Hook/usePostMutation";
 
-interface ProductType {
-  id: number;
-  title: string;
-}
+
 
 export default function Home() {
-  const { data, isLoading, isError } = useQuery({
-    queryFn: async () =>
-      await fetch("https://fakestoreapi.com/products").then((res) =>
-        res.json()
-      ),
-    queryKey: ["products"],
-    retry: 0,
-    refetchOnWindowFocus: false,
-  });
+  const fakeApi : string = "https://fakestoreapi.com/products" 
+  const key : string = 'products'
 
-  const mutation = useMutation({
-    mutationFn: (newProduct: ProductType) => {
-      return fetch("https://fakestoreapi.com/products", {
-        method: "POST",
-        body: JSON.stringify(newProduct),
-      });
-    },
-  });
+  const {data , isLoading , isError} = useGetQuery(fakeApi , key)
+
+  const mutation = usePostMutation(fakeApi ,  key)
 
   if (mutation.isSuccess) {
-    console.log(mutation.variables);
     data.push(mutation.variables);
   }
 
-  if (isLoading) return <p>Loading....</p>;
-  if (isError) return <p>Error</p>;
+  if(isLoading) return <div>Loading ....</div>
+  if (isError) return <p>Error : {isError}</p>
 
   return (
     <>
@@ -41,7 +26,7 @@ export default function Home() {
       </div>
 
       <ul>
-        {data.map((i: { title: string }, idx: number) => (
+        {data && data.map((i: { title: string }, idx: number) => (
           <li key={idx}>{i.title}</li>
         ))}
       </ul>
