@@ -1,6 +1,6 @@
 # React-query-custom-hook
 
-The main purpose of this repo is to have a custom react hook for React query library that works for all React and Next.js. This hook simplifies your react-query experience when you are using it in big projects.
+The main purpose of this repo is to have a custom react hook for React query library that works for all React and Next.js projects. This hook simplifies your react-query experience when you are using it in big projects.
 
 ### _This repository provides two custom hooks for query and mutation using React-query_
 
@@ -36,7 +36,6 @@ pnpm install
 ```
 
 4.Run the application:
-Code block:
 
 ```
 pnpm start
@@ -46,9 +45,7 @@ pnpm start
 
 ### Usage
 
-Wrap your entire application in the <ReactQueryProvider> in your layout.tsx file
-
-Code block:
+Wrap your entire application with ReactQueryProvider in your layout.tsx file
 
 ```javascript
 import ReactQueryProvider from "./Providers/ReactQueryProvider";
@@ -73,7 +70,6 @@ export default function RootLayout({
 ### Example
 
 basic example of useGetQuery hook
-Code block:
 
 ```javascript
 "use client";
@@ -103,7 +99,6 @@ export default function Home() {
 ### Configuration
 
 Configuring the options
-Code block:
 
 ```javascript
 const { data, isLoading, isError } = useGetQuery(fakeApi, key, {
@@ -117,15 +112,13 @@ const { data, isLoading, isError } = useGetQuery(fakeApi, key, {
 
 basic usage example
 
-Code block:
-
 ```javascript
 "use client";
 import LoadingAndError from "./components/LoadingAndError";
 import usePostMutation from "./Hook/usePostMutation";
 
 export default function Home() {
-  const fakeApi: string = "https://fakestoreapi.com/products";
+  const fakeApi: string = "https://FAKEAPI.com/products";
   const key: string = "products";
 
   const mutation = usePostMutation(fakeApi, key);
@@ -155,7 +148,7 @@ export default function Home() {
 ### Configuration
 
 You can configure both API call method and mutation options
-Code block:(the default method is POST)
+(the default method is POST)
 
 ```javascript
 const mutation = usePostMutation(fakeApi, key, "PUT", {
@@ -166,8 +159,7 @@ const mutation = usePostMutation(fakeApi, key, "PUT", {
 });
 ```
 
-_A complete usage of both useGetQuery and usePostMutation_
-Code block:
+A complete usage of both _useGetQuery_ and _usePostMutation_
 
 ```javascript
 "use client";
@@ -176,7 +168,7 @@ import useGetQuery from "./Hook/useGetQuery";
 import usePostMutation from "./Hook/usePostMutation";
 
 export default function Home() {
-  const fakeApi: string = "https://fakestoreapi.com/products";
+  const fakeApi: string = "https://FAKEAPI.com/products";
   const key: string = "products";
 
   const { data , isError , isLoading } = useGetQuery(fakeApi, key, {
