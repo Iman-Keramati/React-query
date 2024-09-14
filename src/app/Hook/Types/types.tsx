@@ -1,15 +1,16 @@
-export type ConfigType = {
-  retry?: number;
-  refetchOnWindowFocus?: boolean;
-};
+import { QueryOptions } from "@tanstack/react-query";
 
-export type ProductType = {
+export interface ConfigType<T> extends QueryOptions<T> {
+  refetchOnWindowFocus?: T;
+}
+
+export interface ProductType {
   id: number;
   title: string;
-};
+}
 
-export type PropType = {
+export interface PropType {
   isLoading: boolean;
   isError: boolean;
   children: React.ReactNode;
-};
+}

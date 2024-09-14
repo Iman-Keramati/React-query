@@ -5,12 +5,12 @@ import { ConfigType } from "./Types/types";
 const useGetQuery = (
   apiRoute: string,
   queryKey: string,
-  config?: ConfigType | undefined
+  config?: ConfigType<boolean> | undefined
 ) => {
-  let configChange: ConfigType;
+  let configChange: ConfigType<boolean>;
 
   if (typeof config === "undefined") {
-    configChange = { retry: 0, refetchOnWindowFocus: false };
+    configChange = { retry: 0 };
   } else {
     configChange = config;
   }
@@ -18,8 +18,7 @@ const useGetQuery = (
   const { data, isLoading, isError } = useQuery({
     queryFn: async () => await fetch(apiRoute).then((res) => res.json()),
     queryKey: [queryKey],
-    retry: configChange.retry,
-    refetchOnWindowFocus: configChange.refetchOnWindowFocus,
+    ...configChange,
   });
 
   // if (isLoading) return <p>Loading....</p>;
