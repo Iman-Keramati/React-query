@@ -45,7 +45,7 @@ pnpm start
 
 ### Usage
 
-Wrap your entire application with ReactQueryProvider in your layout.tsx file
+Wrap your entire application with _ReactQueryProvider_ in your _layout.tsx_ file
 
 ```javascript
 import ReactQueryProvider from "./Providers/ReactQueryProvider";
@@ -69,7 +69,7 @@ export default function RootLayout({
 
 ### Example
 
-basic example of useGetQuery hook
+basic example of _useGetQuery_ hook
 
 ```javascript
 "use client";
@@ -215,3 +215,5 @@ export default function Home() {
 }
 
 ```
+
+Definitly feel free to customize and use your own loadnig and error UI component that matches your application's theme.
