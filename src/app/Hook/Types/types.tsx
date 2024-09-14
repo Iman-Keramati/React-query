@@ -4,10 +4,10 @@ export interface ConfigType<T> extends QueryOptions<T> {
   refetchOnWindowFocus?: T;
 }
 
-export interface ProductType {
+export type ProductType = {
   id: number;
   title: string;
-}
+};
 
 export interface PropType {
   isLoading: boolean;
