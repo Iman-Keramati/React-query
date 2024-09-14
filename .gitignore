@@ -40,4 +40,6 @@ src/app/layout.tsx
 src/app/page.tsx
 src/app/globals.css
 src/app/favicon.ico
+./tailwind.config.ts
+
 
