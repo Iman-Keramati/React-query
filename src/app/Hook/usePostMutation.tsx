@@ -1,12 +1,11 @@
 "use client";
-import { MutationOptions, useMutation } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import { ProductType } from "./Types/types";
 
 const usePostMutation = (
   apiRoute: string,
   key: string,
-  method?: undefined | string,
-  config?: MutationOptions<Response, Error, ProductType>
+  method?: undefined | string
 ) => {
   let methodType = "POST";
   if (typeof method === "string") {
@@ -22,7 +21,6 @@ const usePostMutation = (
         body: JSON.stringify(newProduct),
       });
     },
-    ...config,
     mutationKey: [key],
   });
 

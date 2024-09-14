@@ -1,13 +1,13 @@
 "use client";
 import { useQuery } from "@tanstack/react-query";
-import { ConfigType } from "./Types/types";
+import { ProductType, QueryConfigType } from "./Types/types";
 
 const useGetQuery = (
   apiRoute: string,
   queryKey: string,
-  config?: ConfigType<boolean> | undefined
+  config?: QueryConfigType<ProductType[]> | undefined
 ) => {
-  let configChange: ConfigType<boolean>;
+  let configChange: QueryConfigType<ProductType[]>;
 
   if (typeof config === "undefined") {
     configChange = { retry: 0 };
@@ -20,9 +20,6 @@ const useGetQuery = (
     queryKey: [queryKey],
     ...configChange,
   });
-
-  // if (isLoading) return <p>Loading....</p>;
-  // if (isError) return <p>Error</p>;
 
   return { data, isLoading, isError };
 };

@@ -1,13 +1,14 @@
 import { QueryOptions } from "@tanstack/react-query";
 
-export interface ConfigType<T> extends QueryOptions<T> {
-  refetchOnWindowFocus?: T;
+export interface QueryConfigType<T> extends QueryOptions<T> {
+  refetchOnWindowFocus?: boolean;
 }
 
-export type ProductType = {
+// A SAMPLE JUST FOR EXAMPLE PURPOSES
+export interface ProductType {
   id: number;
   title: string;
-};
+}
 
 export interface PropType {
   isLoading: boolean;
