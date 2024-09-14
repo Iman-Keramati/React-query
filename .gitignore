@@ -34,3 +34,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# ignored files
+src/app/layout.tsx
+src/app/page.tsx
+src/app/globals.css
+src/app/favicon.ico
+
