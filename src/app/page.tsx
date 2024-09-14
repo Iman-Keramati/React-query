@@ -2,22 +2,22 @@
 import useGetQuery from "./Hook/useGetQuery";
 import usePostMutation from "./Hook/usePostMutation";
 
-
-
 export default function Home() {
-  const fakeApi : string = "https://fakestoreapi.com/products" 
-  const key : string = 'products'
+  const fakeApi: string = "https://fakestoreapi.com/products";
+  const key: string = "products";
 
-  const {data , isLoading , isError} = useGetQuery(fakeApi , key)
+  const { data, isLoading, isError } = useGetQuery(fakeApi, key, {
+    refetchOnWindowFocus: true,
+  });
 
-  const mutation = usePostMutation(fakeApi ,  key)
+  const mutation = usePostMutation(fakeApi, key);
 
   if (mutation.isSuccess) {
     data.push(mutation.variables);
   }
 
-  if(isLoading) return <div>Loading ....</div>
-  if (isError) return <p>Error : {isError}</p>
+  if (isLoading) return <div>Loading ....</div>;
+  if (isError) return <p>Error : {isError}</p>;
 
   return (
     <>
@@ -26,9 +26,10 @@ export default function Home() {
       </div>
 
       <ul>
-        {data && data.map((i: { title: string }, idx: number) => (
-          <li key={idx}>{i.title}</li>
-        ))}
+        {data &&
+          data.map((i: { title: string }, idx: number) => (
+            <li key={idx}>{i.title}</li>
+          ))}
       </ul>
       {/* MUTATION */}
       {mutation.isPending && <p>adding new product ....</p>}
