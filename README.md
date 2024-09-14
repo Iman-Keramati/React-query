@@ -16,12 +16,32 @@ The main purpose of this repo is to have a custom react hook for React query lib
 ### Installation
 
 1.Clone the repository:
-Inline code: `git clone https://github.com/Iman-Keramati/React-query.git`
+Code block:
+
+```git clone https://github.com/Iman-Keramati/React-query.git
+
+```
+
 2.Navigate to the project directory:
-Inline code: `cd React-query`
+Code block:
+
+```cd React-query
+
+```
+
 3.Install dependencies:
-Inline code: `pnpm install`
-4.Run the application: `pnpm start`
+Code block:
+
+```
+pnpm install
+```
+
+4.Run the application:
+Code block:
+
+```
+pnpm start
+```
 
 ## **useGetQuery**
 
