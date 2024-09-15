@@ -5,23 +5,36 @@ import { ProductType, QueryConfigType } from "./Types/types";
 const useGetQuery = (
   apiRoute: string,
   queryKey: string,
-  config?: QueryConfigType<ProductType[]> | undefined
+  queryConfig?: QueryConfigType<ProductType[]>,
+  headerConfig?: RequestInit
 ) => {
   let configChange: QueryConfigType<ProductType[]>;
+  let header: RequestInit;
 
-  if (typeof config === "undefined") {
-    configChange = { retry: 0 };
+  if (!headerConfig) {
+    header = {
+      headers: {
+        "Content-Type": "Application/json",
+      },
+    };
   } else {
-    configChange = config;
+    header = headerConfig;
   }
 
-  const { data, isLoading, isError } = useQuery({
-    queryFn: async () => await fetch(apiRoute).then((res) => res.json()),
+  if (!queryConfig) {
+    configChange = { retry: 0 };
+  } else {
+    configChange = queryConfig;
+  }
+
+  const query = useQuery({
+    queryFn: async () =>
+      await fetch(apiRoute, header).then((res) => res.json()),
     queryKey: [queryKey],
     ...configChange,
   });
 
-  return { data, isLoading, isError };
+  return query;
 };
 
 export default useGetQuery;

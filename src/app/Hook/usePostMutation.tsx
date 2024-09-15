@@ -6,23 +6,29 @@ const usePostMutation = (
   apiRoute: string,
   key: string,
   method?: undefined | "POST" | "PUT" | "DELETE",
-  config?: MutationOptions<Response, Error, ProductType>
+  mutationConfig?: MutationOptions<Response, Error, ProductType>,
+  headerConfig?: RequestInit
 ) => {
   let methodType = "POST";
+  let header: RequestInit;
+
   if (typeof method === "string") {
     methodType = method;
-  } else {
-    methodType;
+  }
+
+  if (headerConfig) {
+    header = headerConfig;
   }
 
   const mutation = useMutation({
     mutationFn: (newProduct: ProductType) => {
       return fetch(apiRoute, {
-        method: "POST",
+        method: methodType,
         body: JSON.stringify(newProduct),
+        ...header,
       });
     },
-    ...config,
+    ...mutationConfig,
     mutationKey: [key],
   });
 
