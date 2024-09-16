@@ -98,7 +98,7 @@ export default function Home() {
 
 ### Configuration
 
-Configuring the options
+1.Configure the query options
 
 ```javascript
 const { data, isLoading, isError } = useGetQuery(fakeApi, key, {
@@ -106,6 +106,21 @@ const { data, isLoading, isError } = useGetQuery(fakeApi, key, {
   refetchOnWindowFocus: false,
 });
 // It supports nearly all of the features
+```
+
+2.Configure your fetch request config
+
+```javascript
+const { data, isLoading, isError } = useGetQuery(fakeApi, key, {
+  retry: 1,
+  refetchOnWindowFocus: false,
+  {
+      headers: {
+        "Content-Type": "Application/json",
+      },
+    }
+});
+// It supports all the configurations available in fetch API
 ```
 
 ## **usePostMutation**
