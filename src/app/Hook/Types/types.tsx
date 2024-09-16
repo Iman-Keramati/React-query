@@ -14,4 +14,10 @@ export interface PropType {
   isLoading: boolean;
   isError: boolean;
   children: React.ReactNode;
+  loaderColor?: string;
+  loaderSize?: number;
+}
+export interface LoadingPropType {
+  size?: number;
+  color?: string;
 }

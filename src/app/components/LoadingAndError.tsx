@@ -1,12 +1,14 @@
 import React from "react";
 import { PropType } from "../Hook/Types/types";
+import Loading from "../Styles/Loading";
 
 const LoadingAndError = (props: PropType) => {
-  if (props.isLoading) {
+  const { isLoading, isError, loaderColor, loaderSize } = props;
+  if (isLoading) {
     // TYPICALLY YOU CAN PROVIDE YOUR OWN LOADING UI
-    return <div>Loading ....</div>;
+    return <Loading size={loaderSize} color={loaderColor} />;
   }
-  if (props.isError) {
+  if (isError) {
     // PROVIDE YOUR OWN ERROR UI
     return <p>Error</p>;
   }
